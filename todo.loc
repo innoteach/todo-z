@@ -1,0 +1,14 @@
+<VirtualHost *>
+	ServerName todo.loc
+	ServerAdmin steven
+
+	DocumentRoot /var/www/todo/app/webroot
+	<Directory /var/www/todo/app/webroot/>
+		Options FollowSymLinks MultiViews
+		AllowOverride All
+		#AuthType None
+		Order allow,deny
+		allow from all
+		#Require all granted
+	</Directory>
+</VirtualHost>

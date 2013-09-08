@@ -1,0 +1,19 @@
+/* 
+    Document   : todo
+    Created on : Sep 7, 2013, 4:41:06 PM
+    Author     : steven
+    Description:
+        Purpose of the stylesheet follows.
+*/
+@import '../js/jqueryui/themes/base/jquery.ui.all.css';
+root { 
+    display: block;
+}
+
+table tbody tr:hover{
+    cursor: pointer;
+}
+
+.completed {
+    text-decoration:line-through;
+}
