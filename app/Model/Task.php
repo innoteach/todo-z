@@ -33,7 +33,7 @@ class Task extends AppModel {
 		'name' => array(
 			'minlength' => array(
 				'rule' => array('minlength','3'),
-				//'message' => 'Surely you can be more descriptive.',
+				'message' => 'Surely you can be more descriptive.',
 			),
 		),
 		'completed' => array(
@@ -60,43 +60,7 @@ class Task extends AppModel {
            return $this->set_sort_field($this->data);
         }
         
-        
-        
-        /**
-         * Get completed tasks for a single user
-         * @param uuid $user_id
-         * @return array completed tasks for a single user
-         */
-        public function get_completed_tasks(){
-            return get_tasks(TRUE);
-        }
-        
-        /**
-         * Get open tasks for a single user
-         * @return array open tasks for a single user
-         */
-        public function get_open_tasks(){
-            return get_tasks(FALSE);
-        }
        
-        /**
-         * Get tasks for a user
-         * @param bool $closed
-         * @return array of tasks
-         */
-        private function get_tasks($closed=NULL){
-            //Fetch all tasks on null
-            if($closed === NULL){
-                return $this->find('all', array());
-            }
-            //Fetch open or closed on boolean values
-            if(is_bool($closed)){
-                return $this->find('all', array('Task.completed'=>$closed));
-            }
-            //return false on neither case
-            return false;
-        }
-        
         /**
          * Get the next sort value 
          * @return float next sort value
@@ -128,17 +92,5 @@ class Task extends AppModel {
                 $this->data['Task']['sort'] = $sort;
             }
             return true;
-        }
-        
-        /**
-         * Opens or closes a task
-         * @param uuid $task_id
-         * @param bool $closed
-         * @return bool
-         */
-        private function set_task_status($task_id, $closed){
-            $this->id = $task_id;
-            $this->data['completed']=$closed;
-            return $this->save();
         }
 }
